@@ -1,3 +1,5 @@
+// CONFIG BRANCH INITIAL
+
 // Makes it possible to use and manage the environmental variables we establish //
 require("dotenv").config();
 // Creates and initializes the express app, and assigns it to our designated PORT //
