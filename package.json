@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "migrate": "postgrator --config postgrator-config.js",
-    "migrate:production": "SSL=true heroku run npm run migrate",
+    "migrate:production": "heroku run npm run migrate",
     "deploy": "git push heroku main",
     "postdeploy": "npm run migrate:production"
   },
