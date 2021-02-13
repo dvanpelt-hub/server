@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "migrate": "postgrator --config postgrator-config.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
     "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "postgrator-cli": "^3.2.0"
   }
 }
