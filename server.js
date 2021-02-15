@@ -6,15 +6,22 @@ const cors = require("cors");
 const db = require("./db");
 const morgan = require("morgan");
 const app = express();
-const cors = require("cors");
 
 app.use(cors());
 
-app.use(cors());
 app.use(morgan("dev"));
 
 // Converts data in 'body' of request to a json var called body //
 app.use(express.json());
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content Type, Accept"
+  );
+  next();
+});
 
 // Get all stocks //
 app.get("/api/v1/stocks", async (req, res) => {
