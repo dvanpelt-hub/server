@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 });
 
 // Get all stocks //
-app.get("/api/v1/stocks", async (req, res) => {
+app.get("/api/stocks", async (req, res) => {
   try {
     const results = await db.query("SELECT * FROM stock_holdings");
     res.status(200).json({
@@ -42,7 +42,7 @@ app.get("/api/v1/stocks", async (req, res) => {
 });
 
 // Get a single stock //
-app.get("/api/v1/stocks/:id", async (req, res) => {
+app.get("/api/stocks/:id", async (req, res) => {
   try {
     const results = await db.query(
       "SELECT * FROM stock_holdings WHERE id = $1",
@@ -62,7 +62,7 @@ app.get("/api/v1/stocks/:id", async (req, res) => {
 });
 
 // Create a position (stock review) //
-app.post("/api/v1/stocks/", async (req, res) => {
+app.post("/api/stocks/", async (req, res) => {
   try {
     const results = await db.query(
       "INSERT INTO stock_holdings (ticker_symbol, recommendation_status, stock_value, posting, purchase_price) VALUES ($1, $2, $3, $4, $5) returning *",
@@ -86,7 +86,7 @@ app.post("/api/v1/stocks/", async (req, res) => {
 });
 
 // Update a stock review //
-app.put("/api/v1/stocks/:id", async (req, res) => {
+app.put("/api/stocks/:id", async (req, res) => {
   try {
     const results = await db.query(
       "UPDATE stock_holdings SET ticker_symbol = $1, recommendation_status = $2, stock_value = $3 WHERE id = $4 RETURNING *",
@@ -109,7 +109,7 @@ app.put("/api/v1/stocks/:id", async (req, res) => {
 });
 
 // Delete a stock review //
-app.delete("/api/v1/stocks/:id", async (req, res) => {
+app.delete("/api/stocks/:id", async (req, res) => {
   try {
     const results = await db.query("DELETE FROM stock_holdings WHERE id = $1", [
       req.params.id
