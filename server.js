@@ -7,6 +7,8 @@ const db = require("./db");
 const morgan = require("morgan");
 const app = express();
 
+app.use(express());
+
 app.use(cors());
 
 app.use(morgan("dev"));
@@ -125,3 +127,5 @@ const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`Server is up and listening on PORT ${PORT}`);
 });
+
+module.exports = app;
